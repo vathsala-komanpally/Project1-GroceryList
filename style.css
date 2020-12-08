@@ -32,7 +32,7 @@ h2 {
     transform: translate(50%, 50%);
  }
  .btn {
-    background-color: rgb(172, 149, 20); /* Blue background */
+    background-color: rgb(73, 131, 91); /* Blue background */
     border: none; /* Remove borders */
     color: white; /* White text */
     padding: 12px 16px; /* Some padding */
@@ -40,7 +40,7 @@ h2 {
     cursor: pointer; /* Mouse pointer on hover */
     border-radius: 5px;
     margin: auto;
-    border: 5px solid rgb(107, 104, 104);
+    border: 5px solid rgb(107, 87, 44);
   }
   
   /* Darker background on mouse-over */
