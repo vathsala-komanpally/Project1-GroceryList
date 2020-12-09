@@ -10,6 +10,9 @@
   margin: auto;
   height: 80px;
 }
+#inputText{
+  width: 200px;
+}
 .TopMenuRow {
     /* box-sizing: border-box;*/
     display: flex;
