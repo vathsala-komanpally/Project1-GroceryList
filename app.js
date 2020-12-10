@@ -1,69 +1,88 @@
 console.log("Javascript file is running");
 let numberOfItems = [];
 let itemID = 0;
+
+//when user clicks on each item it prints those items on the page in form of table
 $(".btn").on("click", (event) => {
     event.preventDefault();
     const nameOfItem = event.target.innerHTML;
-    //$("#inputText").value(nameOfItem);
     const itemIdNumber = event.target.id;
+    //has to workout to print price from html fixed price for each item
     const itemPrice = Math.floor((Math.random() * 100) + 1);
-    //has to workout to print prive from html
     const idItemObject = { id: itemIdNumber, Name: nameOfItem, price: itemPrice, repeated: 1 };
     numberOfItems.push(idItemObject);
     //checkingRepeatedItems();
+    itemID++;
+    $("#resultItems").append(`<tr>
+    <th>${itemID}</th>
+    <th>${idItemObject.Name}</th>
+    <th>${idItemObject.price}</th>
+    <th>${idItemObject.repeated}</th></tr>`);
 });
 
+//user clicks on finish button it has to check repeated items and print how many
+//times item repeated  
 $("#finish").on("click", () => {
+    $("#resultItems").remove();
     console.log("finished click event"); let seenDuplicate = false;
     testObject = {};
     //checking item already choosen by user before
     numberOfItems.forEach((element, i) => {
         let itemPropertyName = element.Name;//other way to take name of element.["Name"]
         if (itemPropertyName in testObject) {
-            //missing code to add price if item repeated
-            //testObject[itemPropertyName].duplicate = true;
-            //element.duplicate = true;
             let repeatValue = testObject[itemPropertyName].repeated;
             repeatValue = repeatValue + 1;
-            testObject[itemPropertyName].repeated = repeatValue;
-            //testObject[itemPropertyName].repeated = element.repeated+1;
-            //element.repeated = repeatValue;
-            //numberOfItems[i].repeated = repeatValue;
-            seenDuplicate = true;
-            //delete element;
 
+            testObject[itemPropertyName].repeated = repeatValue;
+            element.repeated = repeatValue;
+            //testObject[itemPropertyName].repeated = element.repeated+1;
+            //numberOfItems[i].repeated = repeatValue;
         }
         else {
             testObject[itemPropertyName] = element;
-            delete element.duplicate;
-
         }
     });
-    // numberOfItems.forEach((element, i) => {
-    //     for(i=1;i<numberOfItems.length;i++)
-    //     { //numberOfItems.indexOf(element.Name)
-    //         if(numberOfItems[i].Name==element.Name)
-    //         {
-    //             numberOfItems.splice(i,1);
-    //             i--;
-    //         }
-    //     }
-    // });
-    const objectLength=Object.keys(testObject).length;
-    numberOfItems.splice(objectLength,numberOfItems.length);
+    //const objectLength=Object.keys(testObject).length;
+    // numberOfItems.splice(objectLength,numberOfItems.length);
     console.log(testObject);
     console.log(numberOfItems);
     printResult(numberOfItems);
 });
 
-function printResult(numberOfItems) {
-    // testObject.foreach((element, i)=>{
-    //      $("#result").append(`<li> ${element.Name} ${element.price}</li>`);
 
-    // });
+//printing values of array on to the table UI
+function printResult(numberOfItems) {
+    $("#resultItems").remove();
+    let sum = 0;
+    //tried to link values of testobject to the table
+    // for (i = 0; i < Object.keys(testObject).length; i++) {
+    //     let objectKey=Object.keys(testObject)[i];
+    //     console.log(objectKey);
+    //     console.log(testObject["objectKey"].Name);
+    //     $("table").append(`<tr>
+    //     <th>${i}</th>
+    // <th>${ testObject.objectKey.Name}</th>
+    // <th>${testObject.objectKey.price}</th>
+    // <th>${testObject.objectKey.repeated}</th></tr>`);
+    //     sum = Object.keys(testObject)[i].price + sum;
+    // }
     numberOfItems.forEach((element, i) => {
-    
-        $("#result").append(`<li> ${element.Name} is: ${element.price}$ ${element.repeated} items selected</li>`);
+        if (element.repeated > 1) {
+            $("table").append(`<tr>
+            <th>${i}</th>
+            <th>${element.Name}</th>
+            <th>${element.price}</th>
+            <th>${element.repeated} times</th></tr>`);
+        } else {
+                $("table").append(`<tr>
+                <th>${i}</th>
+                <th>${element.Name}</th>
+                <th>${element.price}</th>
+                <th>${element.repeated}</th></tr>`);
+            }
+        sum = element.price + sum;
+        //$("#itemsList").append(`<li>${element.Name} of price ${element.price}$ ---- ${element.repeated} items selected</li>`);
     })
     //$("#result").append(`<h2>${i} ${element.Name} ${element.price}</h2>`);
+    $("table").append(`<tr><th></th><th>Total price:</th><th>${sum}</th>`);
 }
