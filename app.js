@@ -29,12 +29,16 @@ $("#finish").on("click", () => {
     //checking item already choosen by user before
     numberOfItems.forEach((element, i) => {
         let itemPropertyName = element.Name;//other way to take name of element.["Name"]
+        //Here I am looking to print repeated value is user clicks on same item 2nd item it has to show 2 times
+        //next to that 2nd item choosen
+        //example apple choosen 3 rimes: apple 1, apple 2 times, apple 3 times
+        //but its priting apple 3 times, apple 1, apple 3 times again..
         if (itemPropertyName in testObject) {
             let repeatValue = testObject[itemPropertyName].repeated;
             repeatValue = repeatValue + 1;
 
             testObject[itemPropertyName].repeated = repeatValue;
-            element.repeated = repeatValue;
+            //element.repeated = repeatValue;
             //testObject[itemPropertyName].repeated = element.repeated+1;
             //numberOfItems[i].repeated = repeatValue;
         }
@@ -52,7 +56,7 @@ $("#finish").on("click", () => {
 
 //printing values of array on to the table UI
 function printResult(numberOfItems) {
-    $("#resultItems").remove();
+    $("#resultItems tbody").remove();
     let sum = 0;
     //tried to link values of testobject to the table
     // for (i = 0; i < Object.keys(testObject).length; i++) {
