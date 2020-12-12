@@ -3,13 +3,20 @@ h1{
   border-bottom: 1px gray solid;
   margin: auto;
 }
-.welcome {
+.welcome, .change {
   background: linear-gradient(-90deg, #ffcb90, #298146);
   border-bottom: 1px gray solid;
   padding: 30px 30px 30px;
   margin: auto;
+  width: 44%;
+  height: 50px;
 }
-
+.welcome{
+  float: left;
+}
+.change{
+  float: right;
+}
 .TopMenuRow, h2 {
     /* box-sizing: border-box;*/
     display: flex;
@@ -53,10 +60,13 @@ h2{
     flex: 29%;
     padding: 3px;
 }
+li{
+  margin: 1em 0;
+}
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 80%;
+  width: 50%;
 }
 
 td, th {

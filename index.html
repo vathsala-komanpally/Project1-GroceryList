@@ -12,8 +12,15 @@
         <!--img src="https://www.heart.org/-/media/aha/h4gm/article-images/fruit-and-vegetables.jpg" /-->
         <h1>Welcome! to Lucky's Grocery Market</h1>
         <div class="welcome">
-            <label>Please choose the items to shop from below list</label>
+            <label>Please choose the items to shop from below list then:</label>
             <button id="finish" type="submit">Finish</button>
+            <marquee behavior="scroll" direction="left">Please click on finish after choosing items</marquee>
+
+        </div>
+        <div class="change">
+            <input id="userInput" type="text" placeholder="enter name of item to remove it"/>
+            <button id="remove" type="submit">Remove</button>
+            <marquee behavior="scroll" direction="left">Please type name of item to remove from list</marquee>
         </div>
         <table>
             <thead>
@@ -21,7 +28,7 @@
                 <th>ItemNo.</th>
                 <th>Name</th>
                 <th>Price</th>
-                <th> choosen</th>
+                <th>Quantity</th>
             </tr>
         </thead>
         <tbody id="resultItems">
@@ -31,75 +38,93 @@
 
    <div class="TopMenuRow">
     <div class="MainMenuImagecolumn">
-        <img src="https://cdn.shopify.com/s/files/1/0035/8413/1145/articles/fruits_1400x.progressive.jpg?v=1552460370"
-        alt="Fruits" style="width:100%">
+        <img src="images/fruits.jpeg" alt="Fruits" style="width:100%">
             <h2>Fruits</h2>
     </div>
     <div class="MainMenuImagecolumn">
-        <img src="https://www.yummytoddlerfood.com/wp-content/uploads/2020/06/sliced-veggies-for-kids-lunches.jpg"
-        alt="Vegetables" style="width:100%">
+        <img src="images/vegetables.jpeg" alt="Vegetables" style="width:100%">
             <h2>Vegetables</h2>
     </div>
     <div class="MainMenuImagecolumn">
-        <img src="https://d2ebzu6go672f3.cloudfront.net/media/content/images/p4_Dairy_MLFeb19_gi911727186.jpg"
-        alt="Dairy" style="width:100%">
+        <img src="images/Dairy.jpeg" alt="Dairy" style="width:100%">
             <h2>Dairy</h2>
     </div>
     <div class="MainMenuImagecolumn">
-        <img src="https://www.bakhabarkissan.com/wp-content/uploads/2019/04/G02419.jpg"
-        alt="Grains" style="width:100%" >
+        <img src="images/grains.jpeg" alt="Grains" style="width:100%" >
             <h2>Grains</h2>
     </div>
     <div class="MainMenuImagecolumn">
-        <img src="https://1v1d1e1lmiki1lgcvx32p49h8fe-wpengine.netdna-ssl.com/wp-content/uploads/2020/02/1580717141-GettyImages-84781500-960x540.jpg"
-        alt="meat" style="width:100%">
+        <img src="images/meat.jpg" alt="meat" style="width:100%">
             <h2>Meat</h2>
     </div>
 </div>
     <div class="groceryList">
         <div class="ItemsList">
         <ul>
-        <li><button class="btn" id="0" value="2$"> Apple</button></li>
-        <li><button class="btn" id="1" value="8$">Grapes</button></li>
-        <li><button class="btn" id="2" value="3$">Mango</button></li>
-        <li><button class="btn" id="3" value="4$"> Pear</button></li>
-        <li><button class="btn" id="4" value="3$"> Banana</button></li>
+        <li><button class="btn" id="0" value="2">Apple<img src="images/apple.jpeg" width=30px>
+        </button></li>
+        <li><button class="btn" id="1" value="8">Grapes<img src="images/grape.png" width=30px>
+        </button></li>
+        <li><button class="btn" id="2" value="3">Mango<img src="images/mango.jpeg" width=30px>
+        </button></li>
+        <li><button class="btn" id="3" value="4"> Pear<img src="images/pear.png" width=30px>
+        </button></li>
+        <li><button class="btn" id="4" value="3">Banana<img src="images/banana.png" width=30px>
+        </button></li>
         </ul>
     </div>
     <div class="ItemsList">
         <ul>
-        <li><button class="btn" id="5" value="1$"> Cucumber</button></li>
-        <li><button class="btn" id="6" value="2$">Carrot</button></li>
-        <li><button class="btn" id="7" value="3$">Capsicum</button></li>
-        <li><button class="btn" id="8" value="4$"> Potato</button></li>
-        <li><button class="btn" id="9" value="4$"> Spinach</button></li>
+        <li><button class="btn" id="5" value="1">Cucumber<img src="images/cucumber.jpeg" width=30px>
+        </button></li>
+        <li><button class="btn" id="6" value="2">Carrot<img src="images/carrot.jpeg" width=30px>
+        </button></li>
+        <li><button class="btn" id="7" value="3">Capsicum<img src="images/capsicum.jpeg" width=30px>
+        </button></li>
+        <li><button class="btn" id="8" value="4">Potato<img src="images/potato.jpeg" width=30px>
+        </button></li>
+        <li><button class="btn" id="9" value="4">Spinach<img src="images/spinach.jpeg" width=30px>
+        </button></li>
         </ul>
     </div>
     <div class="ItemsList">
         <ul>
-        <li><button class="btn" id="10" value="10$">Cheese</button></li>
-        <li><button class="btn" id="11" value="2$">Milk</button></li>
-        <li><button class="btn" id="12" value="7$">Butter</button></li>
-        <li><button class="btn" id="13" value="5$"> Yogurt</button></li>
-        <li><button class="btn" id="14" value="8$"> Eggs</button></li>
+        <li><button class="btn" id="10" value="10">Cheese<img src="images/cheese.png" width=30px>
+        </button></li>
+        <li><button class="btn" id="11" value="2">Milk<img src="images/milk.png" width=30px>
+        </button></li>
+        <li><button class="btn" id="12" value="7">Butter<img src="images/butter.jpeg" width=30px>
+        </button></li>
+        <li><button class="btn" id="13" value="5">Yogurt<img src="images/yogurt.jpeg" width=30px>
+        </button></li>
+        <li><button class="btn" id="14" value="8"> Eggs<img src="images/eggs.jpeg" width=30px>
+        </button></li>
         </ul>
     </div>
     <div class="ItemsList">
         <ul>
-            <li><button class="btn" id="15" value="4$"> Bread</button></li>
-            <li><button class="btn" id="16" value="3$">Pasta</button></li>
-            <li><button class="btn" id="17" value="4$">Rice</button></li>
-            <li><button class="btn" id="18" value="5$"> Oats</button></li>
-            <li><button class="btn" id="19" value="7$"> Barley</button></li>
+            <li><button class="btn" id="15" value="4">Bread<img src="images/bread.jpeg" width=30px></button></li>
+            <li><button class="btn" id="16" value="3">Pasta<img src="images/pasta.jpeg" width=30px>
+            </button></li>
+            <li><button class="btn" id="17" value="14">Rice<img src="images/rice.jpeg" width=30px>
+            </button></li>
+            <li><button class="btn" id="18" value="10">Oats<img src="images/oats.jpeg" width=30px>
+            </button></li>
+            <li><button class="btn" id="19" value="7">Barley<img src="images/barley.jpg" width=30px>
+            </button></li>
         </ul>
     </div>
     <div class="ItemsList">
         <ul>
-        <li><button class="btn" id="20" value="3$"> Chicken</button></li>
-        <li><button class="btn" id="21" value="24$">Fish</button></li>
-        <li><button class="btn" id="22" value="22$">Lamb</button></li>
-        <li><button class="btn" id="23" value="25$"> Goat</button></li>
-        <li><button class="btn" id="24" value="13$"> Prawn</button></li>
+        <li><button class="btn" id="20" value="3"> Chicken<img src="images/chicken.jpeg" width=30px>
+        </button></li>
+        <li><button class="btn" id="21" value="24">Fish<img src="images/fish.png" width=30px>
+        </button></li>
+        <li><button class="btn" id="22" value="22">Lamb<img src="images/lamb.png" width=30px>
+        </button></li>
+        <li><button class="btn" id="23" value="25">Goat<img src="images/goat.jpeg" width=30px>
+        </button></li>
+        <li><button class="btn" id="24" value="13">Prawn<img src="images/prawn.jpeg" width=30px></button></li>
         </ul>
     </div>
     </div>
