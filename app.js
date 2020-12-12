@@ -94,6 +94,8 @@ const itemClickedValue = (nameOfItem, itemIdNumber) => {
             <td>${idItemObject.Name}</td>
             <td>$${idItemObject.price}</td>
            <td>${idItemObject.repeated} 
+           <input type="button" value="+" class="plus" onclick="plusFunction(this)">
+           <input type="button" value="-" class="minus" onclick="minusFunction(this)">
            <button onclick="deleteFunction(this)">
            <i class="fa fa-trash-o"></i></button>
            </td>
@@ -163,6 +165,8 @@ function printResult(testObject) {
         <td>${testObject[objectKey].Name}</td>
         <td>$${testObject[objectKey].price}</td>
         <td>${testObject[objectKey].repeated}
+        <input type="button" value="+" class="plus" onclick="plusFunction(this)">
+           <input type="button" value="-" class="minus" onclick="minusFunction(this)">
         <button onclick="deleteFunction(this)">
            <i class="fa fa-trash-o"></i></button></td></tr>`);
         const priceOf = testObject[objectKey].price;
@@ -170,8 +174,28 @@ function printResult(testObject) {
     }
     $("#resultItems").append(`<tr><th></th><th>Total price:</th><th>${sum}</th>`);
 }
+
+//deleting a row if user clicks on delete symbol
 function deleteFunction(r){
    let row=r.parentNode.parentNode.rowIndex;
    console.log("rowindex",row);
    document.getElementById("itemsTable").deleteRow(row);
+}
+
+//incrementing previous quantity value by 1 user clicks on + button
+function plusFunction(r){
+    let row=r.parentNode.parentNode.rowIndex;
+    let cellValue=document. getElementById("itemsTable").rows[row].cells[3].innerText;
+    cellValue=+cellValue+1;
+    console.log(cellValue);
+    //has to update this value in testObject array
+}
+
+//decreasing previous quantity value by 1 if user clciks '-' button
+function minusFunction(r){
+    let row=r.parentNode.parentNode.rowIndex;
+    let cellValue=document. getElementById("itemsTable").rows[row].cells[3].innerText;
+    cellValue=+cellValue-1;
+    console.log(cellValue);
+    //has to update this value in testObject array
 }
