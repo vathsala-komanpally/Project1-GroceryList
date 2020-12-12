@@ -90,10 +90,14 @@ const itemClickedValue = (nameOfItem, itemIdNumber) => {
             numberOfItems.push(idItemObject);
             itemID++;
             $("#resultItems").append(`<tr>
-            <th>${itemID}</th>
-            <th>${idItemObject.Name}</th>
-            <th>${idItemObject.price}$</th>
-           <th>${idItemObject.repeated}</th></tr>`);
+            <td>${itemID}</td>
+            <td>${idItemObject.Name}</td>
+            <td>$${idItemObject.price}</td>
+           <td>${idItemObject.repeated} 
+           <button onclick="deleteFunction(this)">
+           <i class="fa fa-trash-o"></i></button>
+           </td>
+           </tr>`);
         }
     }
 }
@@ -148,21 +152,26 @@ $("#remove").on("click", function () {
     }
 });
 
-
-
 //printing values from testObject on to the table 
 function printResult(testObject) {
     let sum = 0;
     $("#resultItems").empty();
     for (i = 0; i < Object.keys(testObject).length; i++) {
         let objectKey = Object.keys(testObject)[i];
-        $("table").append(`<tr>
-        <th>${i}</th>
-        <th>${testObject[objectKey].Name}</th>
-        <th>${testObject[objectKey].price}$</th>
-        <th>${testObject[objectKey].repeated}</th></tr>`);
+        $("#resultItems").append(`<tr>
+        <td>${i}</td>
+        <td>${testObject[objectKey].Name}</td>
+        <td>$${testObject[objectKey].price}</td>
+        <td>${testObject[objectKey].repeated}
+        <button onclick="deleteFunction(this)">
+           <i class="fa fa-trash-o"></i></button></td></tr>`);
         const priceOf = testObject[objectKey].price;
         sum = +priceOf + sum;
     }
-    $("table").append(`<tr><th></th><th>Total price:</th><th>${sum}</th>`);
+    $("#resultItems").append(`<tr><th></th><th>Total price:</th><th>${sum}</th>`);
+}
+function deleteFunction(r){
+   let row=r.parentNode.parentNode.rowIndex;
+   console.log("rowindex",row);
+   document.getElementById("itemsTable").deleteRow(row);
 }
