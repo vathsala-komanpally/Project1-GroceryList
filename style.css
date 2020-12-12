@@ -27,15 +27,19 @@ h1{
     padding: 3px;
 }
 
-img, h2{
+img{
     border: 1px solid rgb(34, 177, 70);
-    border-radius: 10px;
+    border-radius: 20px;
+    width: 150px;
+    height: 150px;
 }
 h2{
+  border: 1px solid rgb(34, 177, 70);
+  border-radius: 20px;
   margin: auto;
 }
 
- .btn {
+ .itemNames {
     background-color: rgb(73, 131, 91); /* Blue background */
     border: none; /* Remove borders */
     color: white; /* White text */
@@ -45,6 +49,8 @@ h2{
     border-radius: 5px;
     margin: auto;
     border: 5px solid rgb(107, 87, 44);
+    width: 200px;
+    height: 200px;
   }
   
   /* Darker background on mouse-over */
