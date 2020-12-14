@@ -12,11 +12,11 @@ fruitsObject.forEach((element, i) => {
     $("#fruits").append(`<li><button class="itemNames" value=${element.Name}><img src=${element.Imag}>${element.Name}</button></li>`);
 });
 const vegetablesObject = [
-    { id: 0, Name: "Carrot", Price: 5, Quantity: 0, Imag: "images/carrot.jpeg" },
-    { id: 1, Name: "Capsicum", Price: 3, Quantity: 0, Imag: "images/Capsicum.jpeg" },
-    { id: 2, Name: "Cucumber", Price: 9, Quantity: 0, Imag: "images/cucumber.jpeg" },
-    { id: 3, Name: "Spinach", Price: 5, Quantity: 0, Imag: "images/spinach.jpeg" },
-    { id: 4, Name: "Potato", Price: 3, Quantity: 0, Imag: "images/potato.jpeg" },
+    { id: 0, Name: "Carrot", Price: 2, Quantity: 0, Imag: "images/carrot.jpeg" },
+    { id: 1, Name: "Capsicum", Price: 7, Quantity: 0, Imag: "images/Capsicum.jpeg" },
+    { id: 2, Name: "Cucumber", Price: 2, Quantity: 0, Imag: "images/cucumber.jpeg" },
+    { id: 3, Name: "Spinach", Price: 7, Quantity: 0, Imag: "images/spinach.jpeg" },
+    { id: 4, Name: "Potato", Price: 4, Quantity: 0, Imag: "images/potato.jpeg" },
 ];
 $("#vegetablesList").append('<ol id="vegetables"></ol>');
 vegetablesObject.forEach((element, i) => {
@@ -24,32 +24,32 @@ vegetablesObject.forEach((element, i) => {
 });
 const dairyObject = [
     { id: 0, Name: "Butter", Price: 5, Quantity: 0, Imag: "images/butter.jpeg" },
-    { id: 1, Name: "Cheese", Price: 3, Quantity: 0, Imag: "images/cheese.png" },
-    { id: 2, Name: "Milk", Price: 9, Quantity: 0, Imag: "images/milk.png" },
-    { id: 3, Name: "Eggs", Price: 5, Quantity: 0, Imag: "images/eggs.jpeg" },
-    { id: 4, Name: "Yogurt", Price: 3, Quantity: 0, Imag: "images/yogurt.jpeg" },
+    { id: 1, Name: "Cheese", Price: 10, Quantity: 0, Imag: "images/cheese.png" },
+    { id: 2, Name: "Milk", Price: 3, Quantity: 0, Imag: "images/milk.png" },
+    { id: 3, Name: "Eggs", Price: 7, Quantity: 0, Imag: "images/eggs.jpeg" },
+    { id: 4, Name: "Yogurt", Price: 6, Quantity: 0, Imag: "images/yogurt.jpeg" },
 ];
 $("#dairyList").append('<ol id="dairy"></ol>');
 dairyObject.forEach((element, i) => {
     $("#dairy").append(`<li><button class="itemNames" value=${element.Name}><img src=${element.Imag}>${element.Name}</button></li>`);
 });
 const grainsObject = [
-    { id: 0, Name: "Bread", Price: 5, Quantity: 0, Imag: "images/bread.jpeg" },
-    { id: 1, Name: "Barley", Price: 3, Quantity: 0, Imag: "images/barley.png" },
-    { id: 2, Name: "Rice", Price: 9, Quantity: 0, Imag: "images/rice.jpeg" },
-    { id: 3, Name: "Oats", Price: 5, Quantity: 0, Imag: "images/oats.jpeg" },
-    { id: 4, Name: "Pasta", Price: 3, Quantity: 0, Imag: "images/pasta.jpeg" },
+    { id: 0, Name: "Bread", Price: 4, Quantity: 0, Imag: "images/bread.jpeg" },
+    { id: 1, Name: "Barley", Price: 12, Quantity: 0, Imag: "images/barley.png" },
+    { id: 2, Name: "Rice", Price: 12, Quantity: 0, Imag: "images/rice.jpeg" },
+    { id: 3, Name: "Oats", Price: 6, Quantity: 0, Imag: "images/oats.jpeg" },
+    { id: 4, Name: "Pasta", Price: 4, Quantity: 0, Imag: "images/pasta.jpeg" },
 ];
 $("#grainsList").append('<ol id="grains"></ol>');
 grainsObject.forEach((element, i) => {
     $("#grains").append(`<li><button class="itemNames" value=${element.Name}><img src=${element.Imag}>${element.Name}</button></li>`);
 });
 const meatObject = [
-    { id: 0, Name: "Chicken", Price: 5, Quantity: 0, Imag: "images/chicken.jpeg" },
-    { id: 1, Name: "Fish", Price: 3, Quantity: 0, Imag: "images/fish.png" },
-    { id: 2, Name: "Goat", Price: 9, Quantity: 0, Imag: "images/goat.jpeg" },
-    { id: 3, Name: "Lamb", Price: 5, Quantity: 0, Imag: "images/lamb.png" },
-    { id: 4, Name: "Prawns", Price: 3, Quantity: 0, Imag: "images/prawn.jpeg" },
+    { id: 0, Name: "Chicken", Price: 6, Quantity: 0, Imag: "images/chicken.jpeg" },
+    { id: 1, Name: "Fish", Price: 19, Quantity: 0, Imag: "images/fish.png" },
+    { id: 2, Name: "Goat", Price: 22, Quantity: 0, Imag: "images/goat.jpeg" },
+    { id: 3, Name: "Lamb", Price: 21, Quantity: 0, Imag: "images/lamb.png" },
+    { id: 4, Name: "Prawns", Price: 15, Quantity: 0, Imag: "images/prawn.jpeg" },
 ];
 $("#meatList").append('<ol id="meat"></ol>');
 meatObject.forEach((element, i) => {
@@ -89,7 +89,7 @@ const itemClickedValues = (nameOfItem) => {
                 objIndex = numberOfItems.findIndex((exist => exist.Name == nameOfItem));
                 numberOfItems[objIndex].repeated = exist.repeated + 1;
                 numberOfItems[objIndex].price = exist.repeated * result.Price;
-                alert(`${nameOfItem} already there,its item number: ${numberOfItems[objIndex].repeated}`);
+                alert(`you got ${numberOfItems[objIndex].repeated} ${nameOfItem} in the list, Do you want to 1 more`);
             } else {
                 const itemIdNumber = result.id;
                 const itemPrice = result.Price;
@@ -108,7 +108,7 @@ function printResult() {
     $("#resultItems").empty();
     for (i = 0; i < numberOfItems.length; i++) {
         $("#resultItems").append(`<tr>
-        <td>${numberOfItems[i].id}</td>
+        <td>${i+1}</td>
         <td>${numberOfItems[i].Name}</td>
         <td>$${numberOfItems[i].price}</td>
         <td>${numberOfItems[i].repeated}
@@ -121,12 +121,15 @@ function printResult() {
     }
     $("#resultItems").append(`<tr><th></th><th>Total price:</th><th>${sum}</th>`);
 }
-$("#finish").on("click", printResult);
+$("#finish").on("click", function(){
+    alert("thanks for shopping with us..c u again");
+});
 
 const deleteSelectedItem = (nameOfItem) => {
     const exist = numberOfItems.find(({ Name }) => Name === nameOfItem);
     objIndex = numberOfItems.findIndex((exist => exist.Name == nameOfItem));
     numberOfItems.splice(objIndex, 1);
+    alert(`${nameOfItem} is removed from the list`);
     printResult();
 }
 
@@ -140,7 +143,7 @@ const itemRemovedValues = (nameOfItem) => {
                 objIndex = numberOfItems.findIndex((exist => exist.Name == nameOfItem));
                 numberOfItems[objIndex].repeated = exist.repeated - 1;
                 numberOfItems[objIndex].price = exist.price - result.Price;
-                alert(`there are only ${numberOfItems[objIndex].repeated} ${nameOfItem} in the list`);
+                alert(`you got only ${numberOfItems[objIndex].repeated} ${nameOfItem} in the list`);
             } else if (exist.repeated = 1) {
                 alert(`${nameOfItem} is removed from the list`);
                 deleteSelectedItem(nameOfItem);
