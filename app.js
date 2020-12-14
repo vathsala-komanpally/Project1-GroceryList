@@ -9,7 +9,7 @@ const fruitsObject = [
 ];
 $("#fruitsList").append('<ol id="fruits"></ol>');
 fruitsObject.forEach((element, i) => {
-    $("#fruits").append(`<li><button class="itemNames" id=${element.id} value=${element.Name}><img src=${element.Imag}>${element.Name}</button></li>`);
+    $("#fruits").append(`<li><button class="itemNames" value=${element.Name}><img src=${element.Imag}>${element.Name}</button></li>`);
 });
 const vegetablesObject = [
     { id: 0, Name: "Carrot", Price: 5, Quantity: 0, Imag: "images/carrot.jpeg" },
@@ -20,7 +20,7 @@ const vegetablesObject = [
 ];
 $("#vegetablesList").append('<ol id="vegetables"></ol>');
 vegetablesObject.forEach((element, i) => {
-    $("#vegetables").append(`<li><button class="itemNames" id=${element.id} value=${element.Name}><img src=${element.Imag}>${element.Name}</button></li>`);
+    $("#vegetables").append(`<li><button class="itemNames" value=${element.Name}><img src=${element.Imag}>${element.Name}</button></li>`);
 });
 const dairyObject = [
     { id: 0, Name: "Butter", Price: 5, Quantity: 0, Imag: "images/butter.jpeg" },
@@ -31,7 +31,7 @@ const dairyObject = [
 ];
 $("#dairyList").append('<ol id="dairy"></ol>');
 dairyObject.forEach((element, i) => {
-    $("#dairy").append(`<li><button class="itemNames" id=${element.id} value=${element.Name}><img src=${element.Imag}>${element.Name}</button></li>`);
+    $("#dairy").append(`<li><button class="itemNames" value=${element.Name}><img src=${element.Imag}>${element.Name}</button></li>`);
 });
 const grainsObject = [
     { id: 0, Name: "Bread", Price: 5, Quantity: 0, Imag: "images/bread.jpeg" },
@@ -42,7 +42,7 @@ const grainsObject = [
 ];
 $("#grainsList").append('<ol id="grains"></ol>');
 grainsObject.forEach((element, i) => {
-    $("#grains").append(`<li><button class="itemNames" id=${element.id} value=${element.Name}><img src=${element.Imag}>${element.Name}</button></li>`);
+    $("#grains").append(`<li><button class="itemNames" value=${element.Name}><img src=${element.Imag}>${element.Name}</button></li>`);
 });
 const meatObject = [
     { id: 0, Name: "Chicken", Price: 5, Quantity: 0, Imag: "images/chicken.jpeg" },
@@ -53,7 +53,7 @@ const meatObject = [
 ];
 $("#meatList").append('<ol id="meat"></ol>');
 meatObject.forEach((element, i) => {
-    $("#meat").append(`<li><button class="itemNames" id=${element.id} value=${element.Name}><img src=${element.Imag}>${element.Name}</button></li>`);
+    $("#meat").append(`<li><button class="itemNames" value=${element.Name}><img src=${element.Imag}>${element.Name}</button></li>`);
 });
 
 const products = {
@@ -65,137 +65,110 @@ const products = {
 };
 
 let numberOfItems = [];
-let itemID = 0;
-testObject = {};
+let itemNumber = 0;
 console.log(products);
+
 //when user clicks on each item it prints those items on the page in form of table
 $(".itemNames").on("click", function (event) {
     event.preventDefault();
     const nameOfItem = $(this).val();
-    const itemIdNumber = $(this).attr("id");
-    itemClickedValue(nameOfItem, itemIdNumber);
+    itemClickedValues(nameOfItem);
+
 });
 
-//Based on user choosen item it takes related values and put them in array(numberofItems) like object form 
-//and prints tem clicked details on page in table format
-const itemClickedValue = (nameOfItem, itemIdNumber) => {
+// pushing items clicked values into array of object(numberofItems) and increase quantity and price
+const itemClickedValues = (nameOfItem) => {
     for (i = 0; i < Object.keys(products).length; i++) {
-
-        const value = products[Object.keys(products)[i]];
-        const result = value.find(({ Name }) => Name === nameOfItem);
+        const valueOfKey = products[Object.keys(products)[i]];
+        const result = valueOfKey.find(({ Name }) => Name === nameOfItem);
         if (result) {
-            const itemPrice = result.Price;
-            const idItemObject = { id: itemIdNumber, Name: nameOfItem, price: itemPrice, repeated: 1 };
-
-            numberOfItems.push(idItemObject);
-            itemID++;
-            $("#resultItems").append(`<tr>
-            <td>${itemID}</td>
-            <td>${idItemObject.Name}</td>
-            <td>$${idItemObject.price}</td>
-           <td>${idItemObject.repeated} 
-           <input type="button" value="+" class="plus" onclick="plusFunction(this)">
-           <input type="button" value="-" class="minus" onclick="minusFunction(this)">
-           <button onclick="deleteFunction(this)">
-           <i class="fa fa-trash-o"></i></button>
-           </td>
-           </tr>`);
+            itemNumber++;
+            const exist = numberOfItems.find(({ Name }) => Name === nameOfItem);
+            if (exist) {
+                //console.log("its here in exist:", exist);
+                objIndex = numberOfItems.findIndex((exist => exist.Name == nameOfItem));
+                numberOfItems[objIndex].repeated = exist.repeated + 1;
+                numberOfItems[objIndex].price = exist.repeated * result.Price;
+                alert(`${nameOfItem} already there,its item number: ${numberOfItems[objIndex].repeated}`);
+            } else {
+                const itemIdNumber = result.id;
+                const itemPrice = result.Price;
+                const idItemObject = { id: itemNumber, Name: nameOfItem, price: itemPrice, repeated: result.Quantity + 1 };
+                numberOfItems.push(idItemObject);
+            }
         }
     }
+    console.log(numberOfItems);
+    printResult();
 }
 
-//user clicks on finish button it has to check repeated items and print how many
-//times item repeated  
-$("#finish").on("click", function () {
-    console.log("finished click event");
-    console.log(numberOfItems);
-    //checking items repeated and deleting existed item then incresing repeated value of that item put them in testObject
-    numberOfItems.forEach((element, i) => {
-        const itemPropertyName = element.Name;//other way to take name of element.["Name"]
-        if (itemPropertyName in testObject) {
-            testObject[itemPropertyName].price = 2 * element.price;
-            const repeatValue1 = testObject[itemPropertyName].repeated;
-            //****if user clicks on finish more than 2 times it increasing this value 2 times***//
-            //it looping more times incresing value double
-            const repeatValue = repeatValue1 + 1;
-            testObject[itemPropertyName].repeated = repeatValue;
-        }
-        else {
-            testObject[itemPropertyName] = element;
-        }
-        console.log(numberOfItems);
-        console.log(testObject);
-    });
-    printResult(testObject);
-});
-
-$("#remove").on("click", function () {
-    const inputItemRemove = $("#userInput").val();
-    //converting input string to camel case
-    const itemRemove = inputItemRemove.charAt(0).toUpperCase() + inputItemRemove.slice(1);
-    console.log(itemRemove);
-
-    //checking item exist 
-    if (itemRemove in testObject) {
-        //checking how many items choosen
-        if (testObject[itemRemove].repeated == 1) {
-            delete testObject[itemRemove];
-        } else {
-            testObject[itemRemove].repeated = testObject[itemRemove].repeated - 1;
-            testObject[itemRemove].price = testObject[itemRemove].price * 0.5;
-            alert("only one item removed you have" + testObject[itemRemove].repeated +
-                "more" + itemRemove);
-        }
-        console.log(testObject);
-        //call print results method here
-        printResult(testObject);
-    } else {
-        alert("Item not exist in your list");
-    }
-});
-
-//printing values from testObject on to the table 
-function printResult(testObject) {
+//printing values with total price on to the table 
+function printResult() {
     let sum = 0;
     $("#resultItems").empty();
-    for (i = 0; i < Object.keys(testObject).length; i++) {
-        let objectKey = Object.keys(testObject)[i];
+    for (i = 0; i < numberOfItems.length; i++) {
         $("#resultItems").append(`<tr>
-        <td>${i}</td>
-        <td>${testObject[objectKey].Name}</td>
-        <td>$${testObject[objectKey].price}</td>
-        <td>${testObject[objectKey].repeated}
+        <td>${numberOfItems[i].id}</td>
+        <td>${numberOfItems[i].Name}</td>
+        <td>$${numberOfItems[i].price}</td>
+        <td>${numberOfItems[i].repeated}
         <input type="button" value="+" class="plus" onclick="plusFunction(this)">
            <input type="button" value="-" class="minus" onclick="minusFunction(this)">
         <button onclick="deleteFunction(this)">
            <i class="fa fa-trash-o"></i></button></td></tr>`);
-        const priceOf = testObject[objectKey].price;
+        const priceOf = numberOfItems[i].price;
         sum = +priceOf + sum;
     }
     $("#resultItems").append(`<tr><th></th><th>Total price:</th><th>${sum}</th>`);
 }
+$("#finish").on("click", printResult);
+
+const deleteSelectedItem = (nameOfItem) => {
+    const exist = numberOfItems.find(({ Name }) => Name === nameOfItem);
+    objIndex = numberOfItems.findIndex((exist => exist.Name == nameOfItem));
+    numberOfItems.splice(objIndex, 1);
+    printResult();
+}
+
+const itemRemovedValues = (nameOfItem) => {
+    for (i = 0; i < Object.keys(products).length; i++) {
+        const valueOfKey = products[Object.keys(products)[i]];
+        const result = valueOfKey.find(({ Name }) => Name === nameOfItem);
+        if (result) {
+            const exist = numberOfItems.find(({ Name }) => Name === nameOfItem);
+            if (exist && exist.repeated > 1) {
+                objIndex = numberOfItems.findIndex((exist => exist.Name == nameOfItem));
+                numberOfItems[objIndex].repeated = exist.repeated - 1;
+                numberOfItems[objIndex].price = exist.price - result.Price;
+                alert(`there are only ${numberOfItems[objIndex].repeated} ${nameOfItem} in the list`);
+            } else if (exist.repeated = 1) {
+                alert(`${nameOfItem} is removed from the list`);
+                deleteSelectedItem(nameOfItem);
+            }
+            printResult();
+        }
+    }
+}
+
+
 
 //deleting a row if user clicks on delete symbol
-function deleteFunction(r){
-   let row=r.parentNode.parentNode.rowIndex;
-   console.log("rowindex",row);
-   document.getElementById("itemsTable").deleteRow(row);
+function deleteFunction(r) {
+    let row = r.parentNode.parentNode.rowIndex;
+    let cellItemName = document.getElementById("itemsTable").rows[row].cells[1].innerText;
+    deleteSelectedItem(cellItemName);
 }
 
-//incrementing previous quantity value by 1 user clicks on + button
-function plusFunction(r){
-    let row=r.parentNode.parentNode.rowIndex;
-    let cellValue=document. getElementById("itemsTable").rows[row].cells[3].innerText;
-    cellValue=+cellValue+1;
-    console.log(cellValue);
-    //has to update this value in testObject array
+//incrementing previous quantity value by 1 user clicks on + button and price as well
+function plusFunction(r) {
+    let row = r.parentNode.parentNode.rowIndex;
+    let cellItemName = document.getElementById("itemsTable").rows[row].cells[1].innerText;
+    itemClickedValues(cellItemName);
 }
 
-//decreasing previous quantity value by 1 if user clciks '-' button
-function minusFunction(r){
-    let row=r.parentNode.parentNode.rowIndex;
-    let cellValue=document. getElementById("itemsTable").rows[row].cells[3].innerText;
-    cellValue=+cellValue-1;
-    console.log(cellValue);
-    //has to update this value in testObject array
+//decreasing previous quantity value by 1 if user clciks '-' button and minus price from it
+function minusFunction(r) {
+    let row = r.parentNode.parentNode.rowIndex;
+    let cellItemName = document.getElementById("itemsTable").rows[row].cells[1].innerText;
+    itemRemovedValues(cellItemName);
 }

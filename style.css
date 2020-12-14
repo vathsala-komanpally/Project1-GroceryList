@@ -1,72 +1,74 @@
-h1{
+h1 {
   background: linear-gradient(-90deg, #ffcb90, #298146);
   border-bottom: 1px gray solid;
   margin: auto;
 }
-.welcome, .change {
-  background: linear-gradient(-90deg, #ffcb90, #298146);
-  border-bottom: 1px gray solid;
-  padding: 30px 30px 30px;
-  margin: auto;
-  width: 44%;
-  height: 50px;
-}
-.welcome{
-  float: left;
-}
-.change{
-  float: right;
-}
-.TopMenuRow, h2 {
-    /* box-sizing: border-box;*/
-    display: flex;
-  }
-
-.MainMenuImagecolumn, h2 {
-    flex: 29%;
-    padding: 3px;
-}
-
-img{
-    border: 1px solid rgb(34, 177, 70);
-    border-radius: 20px;
-    width: 150px;
-    height: 150px;
-}
-h2{
+h2 {
   border: 1px solid rgb(34, 177, 70);
   border-radius: 20px;
   margin: auto;
 }
-
- .itemNames {
-    background-color: rgb(73, 131, 91); /* Blue background */
-    border: none; /* Remove borders */
-    color: white; /* White text */
-    padding: 12px 16px; /* Some padding */
-    font-size: 16px; /* Set a font size */
-    cursor: pointer; /* Mouse pointer on hover */
-    border-radius: 5px;
-    margin: auto;
-    border: 5px solid rgb(107, 87, 44);
-    width: 200px;
-    height: 200px;
-  }
-  
-  /* Darker background on mouse-over */
-  .btn:hover {
-    background-color: rgb(121, 34, 7);
-    border-radius: 10px;
-  }
-  .groceryList{
-    /* box-sizing: border-box;*/
-    display: flex;
-  }
-  .ItemsList {
-    flex: 29%;
-    padding: 3px;
+.welcome {
+  background: linear-gradient(-90deg, #ffcb90, #298146);
+  border-bottom: 1px gray solid;
+  padding: 30px 30px 30px;
+  margin: auto;
+  width: 90%;
+  height: 50px;
+  float: left;
 }
-li{
+
+.TopMenuRow,
+h2 {
+  /* box-sizing: border-box;*/
+  display: flex;
+}
+
+.MainMenuImagecolumn {
+  flex: 29%;
+  padding: 3px;
+  
+}
+
+img {
+  border: 1px solid rgb(34, 177, 70);
+  border-radius: 20px;
+  width: 100px;
+  height: 50px;
+}
+.mainMenuImage{
+  width: 100px;
+  height: 150px;
+}
+
+.itemNames {
+  background-color: rgb(73, 131, 91); /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 16px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  border-radius: 5px;
+  margin: auto;
+  border: 5px solid rgb(107, 87, 44);
+  width: 150px;
+  height: 100px;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: rgb(121, 34, 7);
+  border-radius: 10px;
+}
+.groceryList {
+  /* box-sizing: border-box;*/
+  display: flex;
+}
+.ItemsList {
+  flex: 29%;
+  padding: 3px;
+}
+li {
   margin: 1em 0;
 }
 table {
@@ -75,7 +77,8 @@ table {
   width: 50%;
 }
 
-td, th {
+td,
+th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
