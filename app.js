@@ -89,7 +89,7 @@ const itemClickedValues = (nameOfItem) => {
                 objIndex = numberOfItems.findIndex((exist => exist.Name == nameOfItem));
                 numberOfItems[objIndex].repeated = exist.repeated + 1;
                 numberOfItems[objIndex].price = exist.repeated * result.Price;
-                alert(`you got ${numberOfItems[objIndex].repeated} ${nameOfItem} in the list, Do you want to 1 more`);
+                alert(`you got ${numberOfItems[objIndex].repeated-1} ${nameOfItem} in the list, Do you want to 1 more`);
             } else {
                 const itemIdNumber = result.id;
                 const itemPrice = result.Price;
@@ -143,9 +143,9 @@ const itemRemovedValues = (nameOfItem) => {
                 objIndex = numberOfItems.findIndex((exist => exist.Name == nameOfItem));
                 numberOfItems[objIndex].repeated = exist.repeated - 1;
                 numberOfItems[objIndex].price = exist.price - result.Price;
-                alert(`you got only ${numberOfItems[objIndex].repeated} ${nameOfItem} in the list`);
+                alert(`you have only ${numberOfItems[objIndex].repeated} ${nameOfItem} in the list`);
             } else if (exist.repeated = 1) {
-                alert(`${nameOfItem} is removed from the list`);
+               
                 deleteSelectedItem(nameOfItem);
             }
             printResult();
