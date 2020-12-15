@@ -1,30 +1,75 @@
-.welcome {
+* {
+  box-sizing: border-box;
+}
+
+/* Style the header */
+header {
   background: linear-gradient(-90deg, #ffcb90, #298146);
   border-bottom: 1px gray solid;
   padding: 30px 30px 30px;
   margin: auto;
-  width: 90%;
-  height: 100px;
+  width: 100%;
+  height: 150px;
   float: left;
 }
 
+/* Style the header text */
 h1 {
   background: linear-gradient(-90deg, #ffcb90, #298146);
   border-bottom: 1px gray solid;
   margin: auto;
 }
 
+/* Style the button checkout */
 #finish{
   width:150px;
   height: 40px;
   background-color: #9539e0;
 }
+
+/* Style names of grocery categories*/
 h2 {
   border: 1px solid rgb(34, 177, 70);
   border-radius: 20px;
   margin: auto;
 }
 
+
+.TopMenuRow,
+h2 {
+  display: flex;
+}
+
+.MainMenuImagecolumn {
+  flex: 29%;
+  padding: 3px;
+  
+}
+
+img {
+  border: 1px solid rgb(34, 177, 70);
+  border-radius: 20px;
+  width: 100px;
+  height: 50px;
+}
+
+.mainMenuImage{
+  width: 100px;
+  height: 150px;
+}
+
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: rgb(121, 34, 7);
+  border-radius: 10px;
+}
+
+.groceryList {
+  display: flex;
+}
+
+/* Style buttons (name of items) in the ol */
 .itemNames {
   background-color: rgb(73, 131, 91); /* Blue background */
   border: none; /* Remove borders */
@@ -37,8 +82,10 @@ h2 {
   border: 5px solid rgb(107, 87, 44);
   width: 150px;
   height: 100px;
+  margin: 1em 0;
 }
 
+/* Style result items table */
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -57,45 +104,10 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
-.ItemsList {
-  flex: 29%;
-  padding: 3px;
+/* Style the footer */
+footer {
+  background-color: rgb(54, 116, 90);
+  padding: 10px;
+  text-align: center;
+  color: white;
 }
-li {
-  margin: 1em 0;
-}
-
-.TopMenuRow,
-h2 {
-  /* box-sizing: border-box;*/
-  display: flex;
-}
-
-.MainMenuImagecolumn {
-  flex: 29%;
-  padding: 3px;
-  
-}
-
-img {
-  border: 1px solid rgb(34, 177, 70);
-  border-radius: 20px;
-  width: 100px;
-  height: 50px;
-}
-.mainMenuImage{
-  width: 100px;
-  height: 150px;
-}
-
-
-/* Darker background on mouse-over */
-.btn:hover {
-  background-color: rgb(121, 34, 7);
-  border-radius: 10px;
-}
-.groceryList {
-  /* box-sizing: border-box;*/
-  display: flex;
-}
-
