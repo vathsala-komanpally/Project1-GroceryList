@@ -1,5 +1,4 @@
 console.log("Javascript file is running");
-
 const fruitsObject = [
     { id: 0, Name: "Apple", Price: 5, Quantity: 0, Imag: "images/apple.jpeg" },
     { id: 1, Name: "Banana", Price: 3, Quantity: 0, Imag: "images/banana.png" },
