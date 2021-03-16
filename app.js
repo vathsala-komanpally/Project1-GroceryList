@@ -1,4 +1,4 @@
-console.log("Javascript file is running");
+
 const fruitsObject = [
     { id: 0, Name: "Apple", Price: 5, Quantity: 0, Imag: "images/apple.jpeg" },
     { id: 1, Name: "Banana", Price: 3, Quantity: 0, Imag: "images/banana.png" },
@@ -65,7 +65,6 @@ const products = {
 
 let numberOfItems = [];
 let itemNumber = 0;
-console.log(products);
 
 //when user clicks on each item it prints those items on the page in form of table
 $(".itemNames").on("click", function (event) {
@@ -84,7 +83,6 @@ const itemClickedValues = (nameOfItem) => {
             itemNumber++;
             const exist = numberOfItems.find(({ Name }) => Name === nameOfItem);
             if (exist) {
-                //console.log("its here in exist:", exist);
                 objIndex = numberOfItems.findIndex((exist => exist.Name == nameOfItem));
                 numberOfItems[objIndex].repeated = exist.repeated + 1;
                 numberOfItems[objIndex].price = exist.repeated * result.Price;
@@ -97,7 +95,6 @@ const itemClickedValues = (nameOfItem) => {
             }
         }
     }
-    console.log(numberOfItems);
     printResult();
 }
 
@@ -120,6 +117,7 @@ function printResult() {
     }
     $("#resultItems").append(`<tr><th></th><th>Total price:</th><th>${sum}</th>`);
 }
+
 $("#finish").on("click", function(){
     alert("thanks for shopping with us..c u again");
 });
