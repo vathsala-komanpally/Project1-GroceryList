@@ -1,5 +1,5 @@
 # Project1-GroceryList
-
+### Technologies: HTML, CSS, JavaScript and jQuery
 ## Project setup
 Installation - clone this repo and open in VS code then 
 1. Right click on index.html ....> Open with live server   or
